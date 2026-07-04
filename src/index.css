@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-red-primary: #FF3B4D;
+  --color-red-light: #FF5A68;
+  --color-red-dark: #8A1322;
+  --color-red-secondary: #D81F32;
+  
+  --color-bg-dark: #050505;
+  --color-bg-surface: #090909;
+  --color-bg-card: #111111;
+  --color-bg-card-elevated: #181818;
+  
+  --color-text-muted: #888888;
+  --color-text-secondary: #BEBEBE;
+  
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(180deg, #050505 0%, #080808 30%, #140709 70%, #22090D 100%);
+  color: #FFFFFF;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Crimson Red Gradient utilities */
+.text-red-gradient {
+  background: linear-gradient(135deg, #FF4B5C 0%, #D81F32 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-red-gradient {
+  background: linear-gradient(135deg, #FF4B5C 0%, #D81F32 100%);
+}
+
+.border-red-glow {
+  border: 1px solid rgba(255, 70, 90, 0.18);
+  box-shadow: 0 0 40px rgba(255, 59, 77, 0.18);
+}
+
+.border-red-glow-intense {
+  border: 1px solid rgba(255, 70, 90, 0.35);
+  box-shadow: 0 0 40px rgba(255, 59, 77, 0.35);
+}
+
+/* Custom background animations / glow effects */
+.ambient-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 59, 77, 0.08) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D81F32;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF3B4D;
+}
