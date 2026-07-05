@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../../data/siteConfig';
-import { Play, MessageSquare, ChevronRight } from 'lucide-react';
+import { MessageSquare, ChevronRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const handleChatWhatsApp = () => {
     window.open(siteConfig.getWhatsAppLink("Hi ReelTo7, I'm visiting your website and have a question about your reel production services!"), '_blank');
   };
@@ -120,49 +118,32 @@ export const Hero: React.FC = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           className="lg:col-span-5 flex justify-center items-center"
         >
-          <div className="relative w-full max-w-[280px] md:max-w-[320px] aspect-[9/16] rounded-[2.5rem] border-8 border-neutral-800 bg-neutral-950 overflow-hidden shadow-2xl shadow-red-primary/5 group">
+          <div className="relative w-full max-w-[280px] md:max-w-[320px] aspect-[9/16] rounded-[2.5rem] border-8 border-neutral-800 bg-neutral-950 overflow-hidden shadow-2xl shadow-red-primary/5 transition-transform duration-300 hover:scale-[1.02] group">
             {/* Phone Notch */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-neutral-800 rounded-b-xl z-20 flex items-center justify-center">
               <div className="w-8 h-1 bg-neutral-900 rounded-full"></div>
             </div>
 
             {/* Video or Preview */}
-            <div className="w-full h-full relative" onClick={() => setIsPlaying(!isPlaying)}>
-              {isPlaying ? (
-                <video
-                  src="https://assets.mixkit.co/videos/preview/mixkit-girl-filming-with-a-smartphone-on-a-stabilizer-34281-large.mp4"
-                  className="w-full h-full object-cover cursor-pointer"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-              ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 flex flex-col items-center justify-center p-6 text-center cursor-pointer">
-                  {/* Pulsing Play Button */}
-                  <div className="relative mb-6">
-                    <div className="absolute inset-0 rounded-full bg-red-primary/20 scale-150 animate-ping"></div>
-                    <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-red-gradient text-white shadow-lg">
-                      <Play className="h-6 w-6 fill-white stroke-white ml-0.5" />
-                    </div>
-                  </div>
-                  <h4 className="text-white font-bold text-sm tracking-wide mb-1">Click to Play Demo</h4>
-                  <p className="text-[10px] text-text-muted max-w-[200px]">
-                    Preview a sample high-retention reel edit
-                  </p>
-                </div>
-              )}
+            <div className="w-full h-full relative">
+              <video
+                src="/videos/demo-reel.mp4"
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              />
 
               {/* Bottom tag when playing */}
-              {isPlaying && (
-                <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 p-3 z-10 flex items-center justify-between pointer-events-none">
-                  <div>
-                    <div className="text-[9px] font-bold text-red-primary uppercase tracking-wider">Now Playing</div>
-                    <div className="text-[11px] font-bold text-white truncate max-w-[150px]">Cinematic Showcase Reel</div>
-                  </div>
-                  <div className="text-[10px] font-bold text-white bg-white/10 px-2 py-0.5 rounded-full">9:16</div>
+              <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 p-3 z-10 flex items-center justify-between pointer-events-none">
+                <div>
+                  <div className="text-[9px] font-bold text-red-primary uppercase tracking-wider">Now Playing</div>
+                  <div className="text-[11px] font-bold text-white truncate max-w-[150px]">Cinematic Showcase Reel</div>
                 </div>
-              )}
+                <div className="text-[10px] font-bold text-white bg-white/10 px-2 py-0.5 rounded-full">9:16</div>
+              </div>
             </div>
           </div>
         </motion.div>

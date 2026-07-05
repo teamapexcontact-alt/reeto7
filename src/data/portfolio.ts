@@ -1,10 +1,11 @@
 export interface ReelItem {
   id: string;
   category: 'business' | 'wedding' | 'events';
-  thumbnailUrl: string; // Placeholder colors
-  videoUrl: string; // TODO: swap in actual video files/embeds when provided
-  clientName: string;
+  categoryLabel: string;
+  thumbnailUrl: string;
+  videoUrl: string;
   title: string;
+  description: string;
   viewsPlaceholder: string;
 }
 
@@ -19,55 +20,61 @@ export const portfolioReels: ReelItem[] = [
   {
     id: 'reel-1',
     category: 'business',
-    thumbnailUrl: 'linear-gradient(to bottom, #110506, #3b0d11)',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-girl-filming-with-a-smartphone-on-a-stabilizer-34281-large.mp4', // standard placeholder video
-    clientName: 'Party Chicha',
-    title: 'Gourmet Food Launch Reel',
+    categoryLabel: 'Farmhouse Resort',
+    thumbnailUrl: '/videos/party-chicha.jpg',
+    videoUrl: '/videos/party-chicha.mp4',
+    title: 'Moinabad Farmhouse',
+    description: 'Resort Ambience & Nature Promo',
     viewsPlaceholder: '45K+ Views'
   },
   {
     id: 'reel-2',
-    category: 'events',
-    thumbnailUrl: 'linear-gradient(to bottom, #090909, #541116)',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-dj-playing-music-on-a-controller-42861-large.mp4',
-    clientName: 'KR Funverse',
-    title: 'Adventure Park Night Promo',
+    category: 'wedding',
+    categoryLabel: 'Luxury Wedding',
+    thumbnailUrl: '/videos/kr-funverse.jpg',
+    videoUrl: '/videos/kr-funverse.mp4',
+    title: 'Together Forever',
+    description: 'Cinematic Wedding Storytelling',
     viewsPlaceholder: '108K+ Views'
   },
   {
     id: 'reel-3',
-    category: 'wedding',
-    thumbnailUrl: 'linear-gradient(to bottom, #2d070a, #110506)',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-bride-and-groom-holding-hands-during-wedding-walk-48590-large.mp4',
-    clientName: 'Luxury Hyderabad Wedding',
-    title: 'Cinematic Teaser Highlights',
+    category: 'business',
+    categoryLabel: 'Fitness Brand',
+    thumbnailUrl: '/videos/wedding.jpg',
+    videoUrl: '/videos/wedding.mp4',
+    title: 'Discipline Gym Ambience',
+    description: 'Workout Motivation & Energy',
     viewsPlaceholder: '82K+ Views'
   },
   {
     id: 'reel-4',
     category: 'business',
-    thumbnailUrl: 'linear-gradient(to bottom, #180507, #090909)',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-working-on-a-laptop-in-a-coffee-shop-40156-large.mp4',
-    clientName: 'Local Gym & Fitness Brand',
-    title: 'High-Intensity Workout Hook',
+    categoryLabel: 'Dessert Brand',
+    thumbnailUrl: '/videos/gym.jpg',
+    videoUrl: '/videos/gym.mp4',
+    title: 'SkyLaban Dubai Chocolates',
+    description: 'Premium Handcrafted Dessert Promo',
     viewsPlaceholder: '24K+ Views'
   },
   {
     id: 'reel-5',
     category: 'events',
-    thumbnailUrl: 'linear-gradient(to bottom, #3b0d11, #180507)',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-crowd-raising-hands-at-a-concert-34327-large.mp4',
-    clientName: 'Hyderabadi Food Fest',
-    title: 'Street Food Festival Wrap',
+    categoryLabel: 'Automotive',
+    thumbnailUrl: '/videos/food-fest.jpg',
+    videoUrl: '/videos/food-fest.mp4',
+    title: 'MG Motor Travel Lifestyle',
+    description: 'Car Brand Travel Cinematic',
     viewsPlaceholder: '150K+ Views'
   },
   {
     id: 'reel-6',
-    category: 'wedding',
-    thumbnailUrl: 'linear-gradient(to bottom, #541116, #2d070a)',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-groom-putting-on-his-wedding-jacket-48585-large.mp4',
-    clientName: 'Royale Heritage Mandap',
-    title: 'Traditional Reception Opening',
+    category: 'events',
+    categoryLabel: 'Fashion & Lifestyle',
+    thumbnailUrl: '/videos/heritage.jpg',
+    videoUrl: '/videos/heritage.mp4',
+    title: 'Srujana Reddy Streetwalk',
+    description: 'Main Character Energy Promo',
     viewsPlaceholder: '68K+ Views'
   }
 ];
