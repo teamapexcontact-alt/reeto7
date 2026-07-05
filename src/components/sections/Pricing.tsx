@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { pricingPlans, comparisonFeatures } from '../../data/pricing';
 import PricingCard from '../ui/PricingCard';
 import { ChevronDown, ChevronUp, Check, Info } from 'lucide-react';
@@ -6,6 +6,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export const Pricing: React.FC = () => {
   const [showComparison, setShowComparison] = useState(false);
+  const comparisonRef = useRef<HTMLDivElement>(null);
+
+  const handleToggleComparison = () => {
+    const nextState = !showComparison;
+    setShowComparison(nextState);
+    if (nextState) {
+      // Smooth scroll to comparison table after opening animation starts
+      setTimeout(() => {
+        comparisonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+  };
 
   return (
     <section id="pricing" className="py-24 px-6 relative overflow-hidden">
@@ -36,7 +48,7 @@ export const Pricing: React.FC = () => {
         {/* Collapsible Comparison Table Button */}
         <div className="text-center">
           <button
-            onClick={() => setShowComparison(!showComparison)}
+            onClick={handleToggleComparison}
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-red-primary/45 px-6 py-3 text-sm font-semibold text-white hover:shadow-[0_0_15px_rgba(255,59,77,0.15)] transition-all cursor-pointer"
           >
             <span>Compare All Features</span>
@@ -48,14 +60,15 @@ export const Pricing: React.FC = () => {
         <AnimatePresence>
           {showComparison && (
             <motion.div
+              ref={comparisonRef}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="overflow-hidden mt-8 hidden lg:block"
+              className="overflow-hidden mt-8 block"
             >
-              <div className="rounded-2xl border border-white/5 bg-bg-card/40 p-6 backdrop-blur-sm">
-                <table className="w-full text-left border-collapse">
+              <div className="rounded-2xl border border-white/5 bg-bg-card/40 p-4 md:p-6 backdrop-blur-sm overflow-x-auto">
+                <table className="w-full min-w-[600px] lg:min-w-0 text-left border-collapse">
                   <thead>
                     <tr className="border-b border-white/10 text-xs font-bold uppercase tracking-wider text-red-primary">
                       <th className="py-4 px-4 w-1/3">Feature</th>
