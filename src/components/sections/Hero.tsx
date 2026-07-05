@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../../data/siteConfig';
-import { MessageSquare, ChevronRight } from 'lucide-react';
+import { MessageSquare, ChevronRight, Play } from 'lucide-react';
+import VideoModal from '../ui/VideoModal';
 
 export const Hero: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const handleChatWhatsApp = () => {
     window.open(siteConfig.getWhatsAppLink("Hi ReelTo7, I'm visiting your website and have a question about your reel production services!"), '_blank');
   };
@@ -118,7 +121,10 @@ export const Hero: React.FC = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           className="lg:col-span-5 flex justify-center items-center"
         >
-          <div className="relative w-full max-w-[280px] md:max-w-[320px] aspect-[9/16] rounded-[2.5rem] border-8 border-neutral-800 bg-neutral-950 overflow-hidden shadow-2xl shadow-red-primary/5 transition-transform duration-300 hover:scale-[1.02] group">
+          <div 
+            onClick={() => setIsPlaying(true)}
+            className="relative w-full max-w-[280px] md:max-w-[320px] aspect-[9/16] rounded-[2.5rem] border-8 border-neutral-800 bg-neutral-950 overflow-hidden shadow-2xl shadow-red-primary/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-red-primary/20 hover:border-neutral-700 cursor-pointer group"
+          >
             {/* Phone Notch */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-neutral-800 rounded-b-xl z-20 flex items-center justify-center">
               <div className="w-8 h-1 bg-neutral-900 rounded-full"></div>
@@ -126,20 +132,38 @@ export const Hero: React.FC = () => {
 
             {/* Video or Preview */}
             <div className="w-full h-full relative">
-              <video
-                src="/videos/demo-reel.mp4"
-                className="w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
+              {/* Thumbnail Background Image */}
+              <img
+                src="/videos/demo-reel.jpg"
+                alt="Cinematic Showcase Reel Preview"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
+
+              {/* Ambient Dark/Red overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-85 group-hover:opacity-90 transition-opacity"></div>
+              <div className="absolute inset-0 bg-red-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+
+              {/* Small "Featured Reel" badge */}
+              <div className="absolute left-4 top-8 rounded-full bg-black/40 px-3 py-1 text-[11px] font-bold tracking-wide text-white border border-white/10 backdrop-blur-md z-10">
+                Featured Reel
+              </div>
+
+              {/* Play Button (Center Overlay) */}
+              <div className="absolute inset-0 flex items-center justify-center z-10">
+                <div className="relative">
+                  {/* Subtle pulsing background glow ring on hover */}
+                  <div className="absolute inset-0 rounded-full bg-red-primary/10 scale-150 group-hover:animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-red-gradient text-white shadow-lg shadow-red-primary/20 scale-95 group-hover:scale-105 transition-transform duration-300">
+                    <Play className="h-6 w-6 fill-white stroke-white ml-0.5" />
+                  </div>
+                </div>
+              </div>
 
               {/* Bottom tag when playing */}
               <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 p-3 z-10 flex items-center justify-between pointer-events-none">
                 <div>
-                  <div className="text-[9px] font-bold text-red-primary uppercase tracking-wider">Now Playing</div>
+                  <div className="text-[9px] font-bold text-red-primary uppercase tracking-wider">Featured</div>
                   <div className="text-[11px] font-bold text-white truncate max-w-[150px]">Cinematic Showcase Reel</div>
                 </div>
                 <div className="text-[10px] font-bold text-white bg-white/10 px-2 py-0.5 rounded-full">9:16</div>
@@ -148,6 +172,14 @@ export const Hero: React.FC = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Shared Video Lightbox Modal */}
+      <VideoModal
+        isOpen={isPlaying}
+        onClose={() => setIsPlaying(false)}
+        videoUrl="/videos/demo-reel.mp4"
+        title="Cinematic Showcase Reel"
+      />
     </section>
   );
 };
