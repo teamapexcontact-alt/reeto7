@@ -7,8 +7,9 @@ export const MobileBottomNav: React.FC = () => {
     window.open(siteConfig.getWhatsAppLink("Hi ReelTo7, I want to book a free strategy call to discuss my content growth!"), '_blank');
   };
 
+  // Repositioned from bottom-fixed to top-fixed, with top-to-bottom gradient bg fade
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-4 pt-2 lg:hidden bg-gradient-to-t from-bg-dark via-bg-dark/95 to-transparent">
+    <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 pb-2 lg:hidden bg-gradient-to-b from-bg-dark via-bg-dark/95 to-transparent">
       <div className="mx-auto flex h-16 max-w-md items-center justify-between rounded-2xl border border-white/10 bg-bg-card/90 px-4 shadow-2xl backdrop-blur-lg">
         
         {/* Logo Mark */}

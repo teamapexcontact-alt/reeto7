@@ -33,8 +33,9 @@ export const Hero: React.FC = () => {
   };
 
 
+  // Added pt-32 on mobile to ensure the hero section starts below the top-fixed mobile navbar
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center py-20 px-6 overflow-hidden">
+    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 lg:py-20 px-6 overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
       

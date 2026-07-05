@@ -14,8 +14,9 @@ export const Footer: React.FC = () => {
     { label: 'Contact', href: '#contact' },
   ];
 
+  // Removed mobile bottom padding (pb-24) as the navigation bar has been moved to the top
   return (
-    <footer className="border-t border-white/5 bg-bg-dark py-12 px-6 pb-24 lg:pb-12 text-left relative z-10">
+    <footer className="border-t border-white/5 bg-bg-dark py-12 px-6 text-left relative z-10">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-8">
           
